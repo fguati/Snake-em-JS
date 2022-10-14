@@ -13,5 +13,17 @@
         <div class="teste"></div>
     </div>
     <script type="module" src="./Snake.js"></script>
+    <script src="./move.js" type="module"></script>
+    <script type="module">
+        import SnakePart from './Snake.js'
+        import getMoveKey from './move.js'
+        
+        const cabeca = new SnakePart('snake-part', 'snake-part1', 40, 14, 'up');
+        cabeca.create()
+        cabeca.draw()
+
+        getMoveKey(cabeca)
+        
+    </script>
 </body>
 </html>

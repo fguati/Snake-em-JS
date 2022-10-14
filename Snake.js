@@ -29,6 +29,8 @@ class SnakePart {
     }
 }
 
-// const teste = new SnakePart('snake-part', 'snake-part1', 22, 5, 1)
+export default SnakePart
+
+// const teste = new SnakePart('snake-part', 'snake-part1', 1, 1, 1)
 // teste.create()
 // teste.draw()
