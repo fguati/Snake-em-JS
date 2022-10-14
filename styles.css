@@ -1,16 +1,16 @@
 .background {
     background-color: black;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    width: 50vw;
-    height: 50vh;
-    margin: auto auto;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(57, 1fr);
+    width: 700px;
+    height: 400px;
+    margin: calc(20vh) auto;
 }
 
 .snake__head {
     background-color: white;
-    grid-column: 3;
-    grid-row: 3;
+    grid-column: 50;
+    grid-row: 28;
     border-radius: 100%;
 }
