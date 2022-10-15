@@ -11,21 +11,24 @@ function createElement (classe, id) {
 }
 
 class SnakePart {
+    #create () {
+        createElement(this.classe, this.id)
+    }
+    
+
     constructor (classe, id, x, y, direcao) {
         this.x = x;
         this.y = y;
         this.classe = classe;
         this.direcao = direcao;
         this.id = id;
+        this.#create()
+        this.$HTMLElement = document.getElementById(this.id)
     }
 
-    create () {
-        createElement(this.classe, this.id)
-    }
 
     draw () {
-        const $snakePart = document.getElementById(this.id)
-        drawCircle($snakePart, this.x, this.y)
+        drawCircle(this.$HTMLElement, this.x, this.y)
     }
 }
 

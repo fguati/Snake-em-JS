@@ -9,8 +9,8 @@ function getMoveKey (parte) {
         const dir = teclaDir.substring(5).toLowerCase()
         console.log(dir)
         parte.direcao = dir;
-        moveSnake(parte, 5)
-        console.log(parte.x, parte.y)
+        // moveSnake(parte, 5)
+        // console.log(parte.x, parte.y)
     })
 }
 
@@ -33,4 +33,13 @@ function moveSnake(parte, veloc) {
 return parte.draw()
 }
 
-export default getMoveKey
+function continousMove(parte, tamanhoPasso, intervaloDeChamada) {
+    const timer = setInterval(()=>{
+        moveSnake(parte, tamanhoPasso)
+        parte.draw()
+    }, intervaloDeChamada)
+    
+    
+}
+
+export {getMoveKey, moveSnake, continousMove}
