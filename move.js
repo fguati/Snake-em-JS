@@ -1,6 +1,13 @@
+'use strict'
+import {snake, SnakePart} from './Snake.js'
 
 function getMoveKey (parte) {
     document.addEventListener('keydown', (tecla) => {
+        const numDeCurvas = snake.curvasDoCorpo.length
+        const curvaId = 'snake-node' + numDeCurvas;
+        snake.curvasDoCorpo.push(new SnakePart('snake-part', curvaId, parte.x, parte.y, parte.direcao));
+        snake.curvasDoCorpo[numDeCurvas].draw();
+
         const teclaDir = tecla.key
         if(teclaDir.substring(0,5) !== 'Arrow') {
             console.log(teclaDir)

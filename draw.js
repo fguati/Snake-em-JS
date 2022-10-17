@@ -1,3 +1,5 @@
+'use strict'
+
 
 function drawCircle (element, x, y) {
     element.style.borderRadius = '100%';

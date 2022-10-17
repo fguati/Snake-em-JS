@@ -32,7 +32,16 @@ class SnakePart {
     }
 }
 
-export default SnakePart
+const snake = {
+    cabeca: new SnakePart('snake-part', 'snake-head', 50, 28, 'right'),
+    rabo: new SnakePart('snake-part', 'snake-tail', 47, 28, 'right'),
+    curvasDoCorpo: []
+}
+
+export {snake, SnakePart}
+
+// const cabeca = new SnakePart('snake-part', 'snake-head', 50, 28, 'up');
+// const rabo = new SnakePart('snake-part', 'snake-tail', 47, 28, 'up');
 
 // const teste = new SnakePart('snake-part', 'snake-part1', 1, 1, 1)
 // teste.create()
