@@ -3,21 +3,19 @@ import {snake, SnakePart} from './Snake.js'
 
 function getMoveKey (parte) {
     document.addEventListener('keydown', (tecla) => {
-        const numDeCurvas = snake.curvasDoCorpo.length
-        const curvaId = 'snake-node' + numDeCurvas;
-        snake.curvasDoCorpo.push(new SnakePart('snake-part', curvaId, parte.x, parte.y, parte.direcao));
-        snake.curvasDoCorpo[numDeCurvas].draw();
-
         const teclaDir = tecla.key
         if(teclaDir.substring(0,5) !== 'Arrow') {
             console.log(teclaDir)
             throw new Error('Tecla não aceita')
         }
+        
         const dir = teclaDir.substring(5).toLowerCase()
-        console.log(dir)
         parte.direcao = dir;
-        // moveSnake(parte, 5)
-        // console.log(parte.x, parte.y)
+        
+        const numDeCurvas = snake.curvasDoCorpo.length
+        const curvaId = 'snake-node' + numDeCurvas;
+        snake.curvasDoCorpo.push(new SnakePart('snake-curve', curvaId, parte.x, parte.y, parte.direcao));
+        snake.curvasDoCorpo[numDeCurvas].draw();
     })
 }
 
@@ -40,13 +38,4 @@ function moveSnake(parte, veloc) {
 return parte.draw()
 }
 
-function continousMove(parte, tamanhoPasso, intervaloDeChamada) {
-    const timer = setInterval(()=>{
-        moveSnake(parte, tamanhoPasso)
-        parte.draw()
-    }, intervaloDeChamada)
-    
-    
-}
-
-export {getMoveKey, moveSnake, continousMove}
+export {getMoveKey, moveSnake}

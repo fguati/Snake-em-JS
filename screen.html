@@ -13,9 +13,11 @@
     </div>
     <script type="module" src="./Snake.js"></script>
     <script src="./move.js" type="module"></script>
+    <script src="./continousLoad.js" type="module"></script>
     <script type="module">
         import {snake} from './Snake.js'
-        import {getMoveKey, moveSnake, continousMove} from './move.js'
+        import {getMoveKey, moveSnake} from './move.js'
+        import continousLoad from './continousLoad.js'
         
         document.addEventListener('DOMContentLoaded', () => {
             
@@ -24,8 +26,7 @@
     
             getMoveKey(snake.cabeca);
             
-                        
-            continousMove(snake.cabeca, 1, 200)
+            continousLoad(snake, 1, 200)
         })
          
     </script>

@@ -33,9 +33,9 @@ class SnakePart {
 }
 
 const snake = {
-    cabeca: new SnakePart('snake-part', 'snake-head', 50, 28, 'right'),
-    rabo: new SnakePart('snake-part', 'snake-tail', 47, 28, 'right'),
-    curvasDoCorpo: []
+    cabeca: new SnakePart('snake-head', 'snake-head', 50, 28, 'right'),
+    rabo: new SnakePart('snake-tail', 'snake-tail', 47, 28, 'right'),
+    curvasDoCorpo: new Array(0)
 }
 
 export {snake, SnakePart}
