@@ -8,9 +8,22 @@ function criaCurvaSnake(parte) {
     snake.curvasDoCorpo[numDeCurvas].draw();
 }
 
-function mudaDirecaoSnake(parte, teclaDir) {
-    const dir = teclaDir.substring(5).toLowerCase()
-        parte.direcao = dir;
+function mudaDirecaoSnake(parte, dir) {
+    parte.direcao = dir;
+}
+
+function saoDirecoesOpostas (dir1, dir2) {
+    console.log(dir1, dir2)
+    switch (dir1) {
+        case 'up':
+            return dir2 === 'down' ? true : false;
+        case 'down':
+            return dir2 === 'up' ? true : false;
+        case 'left':
+            return dir2 === 'right' ? true : false;
+        case 'right':
+            return dir2 === 'left' ? true : false;
+    }
 }
 
 function getMoveKey(parte) {
@@ -21,9 +34,13 @@ function getMoveKey(parte) {
             throw new Error('Tecla não aceita')
         }
 
-        mudaDirecaoSnake(parte, teclaDir);
+        const dir = teclaDir.substring(5).toLowerCase()
 
-        criaCurvaSnake(parte);
+        console.log(saoDirecoesOpostas(parte.direcao, dir))
+        if (!saoDirecoesOpostas(parte.direcao, dir)) {
+            mudaDirecaoSnake(parte, dir);
+            criaCurvaSnake(parte);
+        }
     })
 }
 
