@@ -12,15 +12,22 @@ function continousLoad(snake, tamanhoPasso, intervaloDeChamada) {
                 moveSnake(parte, tamanhoPasso)
             }
 
-            if(snake.rabo.x === parte.x && snake.rabo.y === parte.y && parte.classe !== 'snake-tail') {
-                console.log(snake.rabo.direcao);
-                snake.rabo.direcao = parte.direcao;
-                console.log(snake.rabo.direcao);
+            if(parte.classe === 'snake-curve') {
+                mudaDirecaoDoRabo(snake, parte)
             }
         })
-
-
+        
+        
     }, intervaloDeChamada)    
 }
+
+function mudaDirecaoDoRabo (snake, curva) {
+    if(snake.rabo.x === curva.x && snake.rabo.y === curva.y) {
+        snake.rabo.direcao = curva.direcao;
+        curva.destroy();
+    }
+}
+
+
 
 export default continousLoad

@@ -14,7 +14,6 @@ class SnakePart {
     #create () {
         createElement(this.classe, this.id)
     }
-    
 
     constructor (classe, id, x, y, direcao) {
         this.x = x;
@@ -30,6 +29,11 @@ class SnakePart {
     draw () {
         drawCircle(this.$HTMLElement, this.x, this.y)
     }
+
+    destroy() {
+        const $background = document.querySelector('.background');
+        $background.removeChild(this.$HTMLElement)
+    }
 }
 
 const snake = {
@@ -40,9 +44,3 @@ const snake = {
 
 export {snake, SnakePart}
 
-// const cabeca = new SnakePart('snake-part', 'snake-head', 50, 28, 'up');
-// const rabo = new SnakePart('snake-part', 'snake-tail', 47, 28, 'up');
-
-// const teste = new SnakePart('snake-part', 'snake-part1', 1, 1, 1)
-// teste.create()
-// teste.draw()
