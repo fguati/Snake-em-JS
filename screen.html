@@ -14,19 +14,26 @@
     <script type="module" src="./Snake.js"></script>
     <script src="./move.js" type="module"></script>
     <script src="./continousLoad.js" type="module"></script>
+    <script src="./draw.js" type="module"></script>
     <script type="module">
-        import {snake} from './Snake.js'
+        import {Snake} from './Snake.js'
         import {getMoveKey, moveSnake} from './move.js'
         import continousLoad from './continousLoad.js'
+        import { conectPartesSnake } from "./draw.js"
         
         document.addEventListener('DOMContentLoaded', () => {
-            
+            const snake = new Snake(50, 28, 15)
             snake.cabeca.draw();
             snake.rabo.draw();
     
-            getMoveKey(snake.cabeca);
+            getMoveKey(snake, snake.cabeca);
+            document.addEventListener('keydown', (tecla) => {
+                if (tecla.key === 'Alt') {
+                    conectPartesSnake(snake.cabeca, snake.rabo)
+                    continousLoad(snake, 1, 200)
+                }
+            })
             
-            continousLoad(snake, 1, 200)
         })
          
     </script>

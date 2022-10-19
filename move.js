@@ -1,19 +1,12 @@
 'use strict'
-import { snake, SnakePart } from './Snake.js'
-
-function criaCurvaSnake(parte) {
-    const numDeCurvas = snake.curvasDoCorpo.length
-    const curvaId = 'snake-node' + numDeCurvas;
-    snake.curvasDoCorpo.push(new SnakePart('snake-curve', curvaId, parte.x, parte.y, parte.direcao));
-    snake.curvasDoCorpo[numDeCurvas].draw();
-}
+import { SnakePart } from './Snake.js'
+import {criaCurvaSnake} from './elementCreate.js'
 
 function mudaDirecaoSnake(parte, dir) {
     parte.direcao = dir;
 }
 
 function saoDirecoesOpostas (dir1, dir2) {
-    console.log(dir1, dir2)
     switch (dir1) {
         case 'up':
             return dir2 === 'down' ? true : false;
@@ -26,20 +19,20 @@ function saoDirecoesOpostas (dir1, dir2) {
     }
 }
 
-function getMoveKey(parte) {
+function getMoveKey(snake, parte) {
     document.addEventListener('keydown', (tecla) => {
         const teclaDir = tecla.key
+        console.log(teclaDir)
+
         if (teclaDir.substring(0, 5) !== 'Arrow') {
-            console.log(teclaDir)
             throw new Error('Tecla não aceita')
         }
 
         const dir = teclaDir.substring(5).toLowerCase()
 
-        console.log(saoDirecoesOpostas(parte.direcao, dir))
         if (!saoDirecoesOpostas(parte.direcao, dir)) {
             mudaDirecaoSnake(parte, dir);
-            criaCurvaSnake(parte);
+            criaCurvaSnake(snake, parte);
         }
     })
 }
