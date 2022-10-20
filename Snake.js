@@ -18,7 +18,6 @@ class SnakePart {
         this.$HTMLElement = document.getElementById(this.id)
     }
 
-
     draw () {
         drawCircle(this.$HTMLElement, this.x, this.y)
     }
@@ -36,12 +35,6 @@ class Snake {
         this.curvasDoCorpo = new Array(0)
     }
 }
-
-// const snake = {
-//     cabeca: new SnakePart('snake-head', 'snake-head', 50, 28, 'right'),
-//     rabo: new SnakePart('snake-tail', 'snake-tail', 37, 28, 'right'),
-//     curvasDoCorpo: new Array(0)
-// }
 
 export {Snake, SnakePart}
 

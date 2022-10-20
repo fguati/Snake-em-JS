@@ -3,6 +3,8 @@
 import {conectPartesSnake} from './draw.js'
 import {SnakePart} from './Snake.js'
 
+
+
 function createElement (classe, id) {
     let $background = document.querySelector('.background');
     let element = document.createElement('div');

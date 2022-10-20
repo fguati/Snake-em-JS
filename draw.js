@@ -44,6 +44,12 @@ function conectPartesSnake (parteAnterior, partePosterior) {
 
 }
 
+function conectCabecaRabo (snake) {
+    if(snake.curvasDoCorpo.length === 0) {
+        conectPartesSnake(snake.cabeca, snake.rabo)
+    }
+}
 
 
-export  {drawCircle, conectPartesSnake}
+
+export  {drawCircle, conectPartesSnake, conectCabecaRabo}

@@ -1,5 +1,5 @@
 'use strict'
-import { SnakePart } from './Snake.js'
+
 import {criaCurvaSnake} from './elementCreate.js'
 
 function mudaDirecaoSnake(parte, dir) {
@@ -19,21 +19,29 @@ function saoDirecoesOpostas (dir1, dir2) {
     }
 }
 
+function respostaDoBotao (parte, dir, snake) {
+    if (!saoDirecoesOpostas(parte.direcao, dir)) {
+        mudaDirecaoSnake(parte, dir);
+        criaCurvaSnake(snake, parte);
+    }
+
+}
+
+function checarTeclaValida (teclaString) {
+    if (teclaString.substring(0, 5) !== 'Arrow') {
+        throw new Error('Tecla não aceita')
+    }
+}
+
 function getMoveKey(snake, parte) {
     document.addEventListener('keydown', (tecla) => {
         const teclaDir = tecla.key
         console.log(teclaDir)
 
-        if (teclaDir.substring(0, 5) !== 'Arrow') {
-            throw new Error('Tecla não aceita')
-        }
+        checarTeclaValida (teclaDir)
 
         const dir = teclaDir.substring(5).toLowerCase()
-
-        if (!saoDirecoesOpostas(parte.direcao, dir)) {
-            mudaDirecaoSnake(parte, dir);
-            criaCurvaSnake(snake, parte);
-        }
+        respostaDoBotao (parte, dir, snake)
     })
 }
 
@@ -55,6 +63,5 @@ function moveSnake(parte, veloc) {
 
     return parte.draw()
 }
-
 
 export { getMoveKey, moveSnake }
