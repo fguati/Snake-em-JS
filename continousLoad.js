@@ -2,7 +2,7 @@
 
 import { moveSnake } from "./move.js"
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
-import { isColisaoPontoCorpo } from './colisao.js'
+import { isColisaoPontoCorpo, isColisaoComBordaDaTela } from './colisao.js'
 import gameOver from "./gameOver.js"
 
 function eliminarCurva(snake, curva) {
@@ -38,7 +38,7 @@ function processarCurvas (snake) {
 }
 
 function checaGameOver (snake, timer) {
-    if (isColisaoPontoCorpo (snake.cabeca, snake)) {
+    if (isColisaoPontoCorpo (snake.cabeca, snake) || isColisaoComBordaDaTela(snake.cabeca)) {
         console.log('Colisão!')
         gameOver(snake, timer);
     }

@@ -33,13 +33,7 @@ function loadBackground (height, width, color, pixelSize){
     
 }
 
-function loadInicial (configuracoes = configuracoesIniciais) {
-    const width = configuracoes.screenWidth;
-    const height = configuracoes.screenHeight;
-    const pixelSize = configuracoes.pixelSize;
-    const color = configuracoes.screenColor;
-    const snakeSize = configuracoes.snakeSize
-    
+function loadInicial (width = configuracoesIniciais.screenWidth, height = configuracoesIniciais.screenHeight, pixelSize = configuracoesIniciais.pixelSize, color = configuracoesIniciais.screenColor, snakeSize = configuracoesIniciais.snakeSize) {    
     const coordenadasIniciais = coordenadascIniciaisSnake (width, height, pixelSize)
 
     loadBackground(height, width, color, pixelSize);

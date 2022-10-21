@@ -1,4 +1,6 @@
+'use strict'
 
+import { configuracoesIniciais } from "./loadInicial.js"
 
 function isColisaoPontoReta (ponto, endReta1, endReta2) {
     const distX = endReta1.x - endReta2.x
@@ -48,4 +50,10 @@ function isColisaoPontoCorpo (ponto, snake) {
     return resposta;
 }
 
-export {isColisaoPontoCorpo}
+function isColisaoComBordaDaTela (ponto, telaHeight = configuracoesIniciais.screenHeight, telaWidth = configuracoesIniciais.screenWidth, pixelSize = configuracoesIniciais.pixelSize) {
+    const colunas = Math.round(telaWidth / pixelSize);
+    const linhas = Math.round(telaHeight / pixelSize);
+    return ponto.x < 0 || ponto.x > colunas || ponto.y < 0 || ponto.y > linhas
+}
+
+export {isColisaoPontoCorpo, isColisaoComBordaDaTela}
