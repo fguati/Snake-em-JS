@@ -16,7 +16,7 @@
         import { loadInicial } from "./loadInicial.js"
         
         document.addEventListener('DOMContentLoaded', () => {
-            let snake = loadInicial()
+            let {snake, fruta} = loadInicial()
     
             getMoveKey(snake, snake.cabeca);
             document.addEventListener('keydown', (tecla) => {
