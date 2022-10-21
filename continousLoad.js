@@ -3,6 +3,7 @@
 import { moveSnake } from "./move.js"
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
 import { isColisaoPontoCorpo } from './colisao.js'
+import gameOver from "./gameOver.js"
 
 function eliminarCurva(snake, curva) {
     curva.destroy();
@@ -36,22 +37,27 @@ function processarCurvas (snake) {
     }
 }
 
-function loadTick (snake, tamanhoPasso) {
-    console.log('tick');
-
-    moveSnake(snake.cabeca, tamanhoPasso);
+function checaGameOver (snake, timer) {
     if (isColisaoPontoCorpo (snake.cabeca, snake)) {
         console.log('Colisão!')
-        // Chama Game Over
+        gameOver(snake, timer);
     }
+}
+
+function loadTick (snake, tamanhoPasso, timer) {
+    console.log('tick');
+    console.log(snake);
+
+    moveSnake(snake.cabeca, tamanhoPasso);
+    checaGameOver (snake, timer);
     moveSnake(snake.rabo, tamanhoPasso);
     processarCurvas(snake);
     conectCabecaRabo(snake);
 }
 
 function continousLoad(snake, tamanhoPasso, intervaloDeChamada) {
-    const timer = setInterval(()=>{
-        loadTick (snake, tamanhoPasso)
+    let timer = setInterval(()=>{
+        loadTick (snake, tamanhoPasso, timer)
     } , intervaloDeChamada)    
 
     document.addEventListener('keydown', (tecla) => {

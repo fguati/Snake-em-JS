@@ -10,7 +10,6 @@ function drawCircle (element, x, y, radius = '10%', color = "#FFFFFF") {
 
 function drawSnakeSegment (parte, x, y, spanX, spanY) {
     parte.$HTMLElement.style.gridArea = `${y} / ${x} / span ${spanY} / span ${spanX}`;
-    console.log(parte.id, `${y} / ${x} / span ${spanY} / span ${spanX}`)
 }
 
 function conectPartesSnake (parteAnterior, partePosterior) {

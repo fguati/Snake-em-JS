@@ -40,8 +40,7 @@ function checarTeclaValida (teclaString) {
 function getMoveKey(snake, parte) {
     document.addEventListener('keydown', (tecla) => {
         const teclaDir = tecla.key
-        console.log(teclaDir)
-
+        
         checarTeclaValida (teclaDir)
 
         const dir = teclaDir.substring(5).toLowerCase()

@@ -8,32 +8,22 @@
     <title>Snake</title>
 </head>
 <body>
-    <div class="background">
+    <div class="background"></div>
 
-    </div>
-    <script type="module" src="./Snake.js"></script>
-    <script src="./move.js" type="module"></script>
-    <script src="./continousLoad.js" type="module"></script>
-    <script src="./draw.js" type="module"></script>
-    <script src="./loadInicial.js" type="module"></script>
     <script type="module">
-        import {getMoveKey, moveSnake} from './move.js'
+        import {getMoveKey } from './move.js'
         import continousLoad from './continousLoad.js'
-        import { conectPartesSnake } from "./draw.js"
         import { loadInicial } from "./loadInicial.js"
         
         document.addEventListener('DOMContentLoaded', () => {
-            // loadBackground(300, 300,'#555555', 3)
-            const snake = loadInicial()
+            let snake = loadInicial()
     
             getMoveKey(snake, snake.cabeca);
             document.addEventListener('keydown', (tecla) => {
                 if (tecla.key === 'Shift') {
-                    conectPartesSnake(snake.cabeca, snake.rabo)
                     continousLoad(snake, 1, 500)
                 }
-            })
-            
+            })  
         })
          
     </script>
