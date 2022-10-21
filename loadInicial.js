@@ -45,7 +45,7 @@ function loadInicial (width = configuracoesIniciais.screenWidth, height = config
     const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize)
     desenhoInicialSnake(snake);
 
-    const fruta = new Frutas(10, 15)
+    const fruta = new Frutas(10, 15, snake)
 
     return {snake, fruta}
 }

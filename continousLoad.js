@@ -2,7 +2,7 @@
 
 import { moveSnake } from "./move.js"
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
-import { isColisaoPontoCorpo, isColisaoComBordaDaTela } from './colisao.js'
+import { isColisaoPontoCorpo, isColisaoComBordaDaTela, isColisaoPontoPonto } from './colisao.js'
 import gameOver from "./gameOver.js"
 
 function eliminarCurva(snake, curva) {
@@ -44,20 +44,28 @@ function checaGameOver (snake, timer) {
     }
 }
 
-function loadTick (snake, tamanhoPasso, timer) {
+function checaComeuFruta (fruta, cabeca) {
+    if (isColisaoPontoPonto(fruta, cabeca)) {
+        console.log('comeu')
+        fruta.mudaParaLocalRandom()
+    }
+}
+
+function loadTick (snake, tamanhoPasso, timer, fruta) {
     console.log('tick');
     console.log(snake);
 
     moveSnake(snake.cabeca, tamanhoPasso);
     checaGameOver (snake, timer);
+    checaComeuFruta (fruta, snake.cabeca);
     moveSnake(snake.rabo, tamanhoPasso);
     processarCurvas(snake);
     conectCabecaRabo(snake);
 }
 
-function continousLoad(snake, tamanhoPasso, intervaloDeChamada) {
+function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta) {
     let timer = setInterval(()=>{
-        loadTick (snake, tamanhoPasso, timer)
+        loadTick (snake, tamanhoPasso, timer, fruta)
     } , intervaloDeChamada)    
 
     document.addEventListener('keydown', (tecla) => {

@@ -56,4 +56,8 @@ function isColisaoComBordaDaTela (ponto, telaHeight = configuracoesIniciais.scre
     return ponto.x < 0 || ponto.x > colunas || ponto.y < 0 || ponto.y > linhas
 }
 
-export {isColisaoPontoCorpo, isColisaoComBordaDaTela}
+function isColisaoPontoPonto (ponto1, ponto2) {
+    return ponto1.x === ponto2.x && ponto1.y === ponto2.y
+}
+
+export {isColisaoPontoCorpo, isColisaoComBordaDaTela, isColisaoPontoPonto}
