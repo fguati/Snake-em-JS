@@ -1,18 +1,12 @@
 'use strict'
 
-function drawCircle (element, x, y) {
-    element.style.borderRadius = '20%';
-    element.style.background = "#FFFFFF"
+function drawCircle (element, x, y, radius = '10%', color = "#FFFFFF") {
+    element.style.borderRadius = radius;
+    element.style.background = color;
     element.style.gridColumn = x;
     element.style.gridRow = y;
     element.style.width = '100%';
 }
-
-// function defineReta (ponto1, ponto2) {
-//     const deltaX = ponto1.x - ponto2.x;
-//     const a = (ponto1.y - ponto2.y) / deltaX;
-//     const b = ((ponto1.x * ponto2.y) - (ponto2.x * ponto1.y)) / deltaX;
-// }
 
 function drawSnakeSegment (parte, x, y, spanX, spanY) {
     parte.$HTMLElement.style.gridArea = `${y} / ${x} / span ${spanY} / span ${spanX}`;
@@ -50,6 +44,12 @@ function conectCabecaRabo (snake) {
     }
 }
 
+function desenhoInicialSnake (snake) {
+    snake.cabeca.draw();
+    snake.rabo.draw();
+    conectPartesSnake(snake.cabeca, snake.rabo);
+}
 
 
-export  {drawCircle, conectPartesSnake, conectCabecaRabo}
+
+export  {drawCircle, conectPartesSnake, conectCabecaRabo, desenhoInicialSnake}

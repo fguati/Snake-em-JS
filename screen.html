@@ -15,22 +15,22 @@
     <script src="./move.js" type="module"></script>
     <script src="./continousLoad.js" type="module"></script>
     <script src="./draw.js" type="module"></script>
+    <script src="./loadInicial.js" type="module"></script>
     <script type="module">
-        import {Snake} from './Snake.js'
         import {getMoveKey, moveSnake} from './move.js'
         import continousLoad from './continousLoad.js'
         import { conectPartesSnake } from "./draw.js"
+        import { loadInicial } from "./loadInicial.js"
         
         document.addEventListener('DOMContentLoaded', () => {
-            const snake = new Snake(50, 28, 15)
-            snake.cabeca.draw();
-            snake.rabo.draw();
+            // loadBackground(300, 300,'#555555', 3)
+            const snake = loadInicial()
     
             getMoveKey(snake, snake.cabeca);
             document.addEventListener('keydown', (tecla) => {
-                if (tecla.key === 'Alt') {
+                if (tecla.key === 'Shift') {
                     conectPartesSnake(snake.cabeca, snake.rabo)
-                    continousLoad(snake, 1, 200)
+                    continousLoad(snake, 1, 500)
                 }
             })
             

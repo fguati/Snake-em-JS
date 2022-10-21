@@ -2,6 +2,7 @@
 
 import { moveSnake } from "./move.js"
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
+import { isColisaoPontoCorpo } from './colisao.js'
 
 function eliminarCurva(snake, curva) {
     curva.destroy();
@@ -36,7 +37,13 @@ function processarCurvas (snake) {
 }
 
 function loadTick (snake, tamanhoPasso) {
+    console.log('tick');
+
     moveSnake(snake.cabeca, tamanhoPasso);
+    if (isColisaoPontoCorpo (snake.cabeca, snake)) {
+        console.log('Colisão!')
+        // Chama Game Over
+    }
     moveSnake(snake.rabo, tamanhoPasso);
     processarCurvas(snake);
     conectCabecaRabo(snake);

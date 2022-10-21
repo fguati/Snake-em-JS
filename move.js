@@ -27,8 +27,12 @@ function respostaDoBotao (parte, dir, snake) {
 
 }
 
+function isArrowKey (teclaString) {
+    return teclaString.substring(0, 5) === 'Arrow'
+}
+
 function checarTeclaValida (teclaString) {
-    if (teclaString.substring(0, 5) !== 'Arrow') {
+    if (!isArrowKey (teclaString)) {
         throw new Error('Tecla não aceita')
     }
 }
