@@ -10,7 +10,7 @@ const configuracoesIniciais = {
     screenWidth: 700,
     screenColor: '#000000',
     pixelSize: 7,
-    snakeSize: 15,
+    snakeSize: 5,
     colunas: Math.round(700 / 7),
     linhas: Math.round(400 / 7)
 }

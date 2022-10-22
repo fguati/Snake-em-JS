@@ -48,6 +48,8 @@ function checaComeuFruta (fruta, cabeca) {
     if (isColisaoPontoPonto(fruta, cabeca)) {
         console.log('comeu')
         fruta.mudaParaLocalRandom()
+        fruta.comer()
+        // chama comeu fruta
     }
 }
 
