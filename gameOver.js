@@ -3,7 +3,7 @@
 import { configuracoesIniciais, coordenadascIniciaisSnake } from './loadInicial.js'
 import { conectCabecaRabo } from './draw.js'
 
-function gameOver(snake, timer) {
+function gameOver(snake, timer, fruta) {
     clearInterval(timer);
     snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
     snake.curvasDoCorpo = [];
@@ -24,6 +24,8 @@ function gameOver(snake, timer) {
     rabo.x = coordenadasCabeca.x - configuracoesIniciais.snakeSize;
     rabo.y = coordenadasCabeca.y;
     rabo.direcao = 'right';
+
+    fruta.mudaParaLocalRandom();
 
     conectCabecaRabo(snake);
     // snake = loadInicial();

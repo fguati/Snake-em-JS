@@ -37,10 +37,10 @@ function processarCurvas (snake) {
     }
 }
 
-function checaGameOver (snake, timer) {
+function checaGameOver (snake, timer, fruta) {
     if (isColisaoPontoCorpo (snake.cabeca, snake) || isColisaoComBordaDaTela(snake.cabeca)) {
         console.log('Colisão!')
-        gameOver(snake, timer);
+        gameOver(snake, timer, fruta);
     }
 }
 
@@ -58,7 +58,7 @@ function loadTick (snake, tamanhoPasso, timer, fruta) {
     console.log(snake);
 
     moveSnake(snake.cabeca, tamanhoPasso);
-    checaGameOver (snake, timer);
+    checaGameOver (snake, timer, fruta);
     checaComeuFruta (fruta, snake.cabeca);
     moveSnake(snake.rabo, tamanhoPasso);
     processarCurvas(snake);
