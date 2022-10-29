@@ -2,8 +2,8 @@
 
 import { drawCircle } from "./draw.js";
 import { createElement } from "./elementCreate.js";
-import { configuracoesIniciais } from "./loadInicial.js";
-import { isColisaoPontoCorpo } from "./colisao.js";
+import configuracoesIniciais from "./configuraçõesIniciais.js";
+import Colisao from "./colisao.js";
 
 class Frutas {
     #create() {
@@ -33,7 +33,7 @@ class Frutas {
 
     mudaParaLocalRandom() {
         this.#getRandomCoordinates();
-        while(isColisaoPontoCorpo(this, this.snake)){
+        while(Colisao.pontoCorpo(this, this.snake)){
             this.#getRandomCoordinates();
         }
         

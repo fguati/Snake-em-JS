@@ -1,55 +1,26 @@
 'use strict'
 
-import { moveSnake } from "./move.js"
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
-import { isColisaoPontoCorpo, isColisaoComBordaDaTela, isColisaoPontoPonto } from './colisao.js'
-import gameOver from "./gameOver.js"
+import Colisao from './colisao.js'
+import checaGameOver from "./gameOver.js"
+import { pauseButton, getMoveKey, removeMoveKey } from "./controls.js"
 
-function eliminarCurva(snake, curva) {
-    curva.destroy();
-    
-    const primeiraCurva = snake.curvasDoCorpo[0];
-    if(primeiraCurva.id === curva.id) {
-        snake.curvasDoCorpo.shift();
-    }
-
-}
-
-function colisaoRaboCurva (snake, curva) {
-    if(snake.rabo.x === curva.x && snake.rabo.y === curva.y) {
-        snake.rabo.direcao = curva.direcao;
-        
-        eliminarCurva(snake, curva)
-    }
-}
-
-function processarCurvas (snake) {
+/*
+loadTickCurvas - Função que realiza todas as ações que envolvam curvas da cobra em um "tick". Ela checa se exitem curvas e, 
+se existirem checa se alguma curva tocou no rabo e a elimina e redesenha os segmentos da cobra mais próximos do rabo e da 
+cabeça.
+*/
+function loadTickCurvas (snake) {
     const curvas = snake.curvasDoCorpo;
     const numeroDeCurvas = curvas.length;
     
     if (numeroDeCurvas > 0) {
-        const primeiraCurva = curvas[numeroDeCurvas - 1];
+        const curvaMaisPertoDaCabeca = curvas[numeroDeCurvas - 1];
         
-        conectPartesSnake(snake.cabeca, primeiraCurva);
+        conectPartesSnake(snake.cabeca, curvaMaisPertoDaCabeca);
         
-        colisaoRaboCurva(snake, curvas[0]);
+        Colisao.raboCurva(snake, curvas[0]);
         conectPartesSnake(curvas[0], snake.rabo);
-    }
-}
-
-function checaGameOver (snake, timer, fruta) {
-    if (isColisaoPontoCorpo (snake.cabeca, snake) || isColisaoComBordaDaTela(snake.cabeca)) {
-        console.log('Colisão!')
-        gameOver(snake, timer, fruta);
-    }
-}
-
-function checaComeuFruta (fruta, cabeca) {
-    if (isColisaoPontoPonto(fruta, cabeca)) {
-        console.log('comeu')
-        fruta.mudaParaLocalRandom()
-        fruta.comer()
-        // chama comeu fruta
     }
 }
 
@@ -57,11 +28,11 @@ function loadTick (snake, tamanhoPasso, timer, fruta) {
     console.log('tick');
     console.log(snake);
 
-    moveSnake(snake.cabeca, tamanhoPasso);
+    snake.cabeca.move(tamanhoPasso);
     checaGameOver (snake, timer, fruta);
-    checaComeuFruta (fruta, snake.cabeca);
-    moveSnake(snake.rabo, tamanhoPasso);
-    processarCurvas(snake);
+    snake.checaComeuFruta(fruta);
+    snake.rabo.move(tamanhoPasso);
+    loadTickCurvas(snake);
     conectCabecaRabo(snake);
 }
 
@@ -70,11 +41,8 @@ function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta) {
         loadTick (snake, tamanhoPasso, timer, fruta)
     } , intervaloDeChamada)    
 
-    document.addEventListener('keydown', (tecla) => {
-        if (tecla.key === 'Control') {
-            clearInterval(timer)
-        }
-    })
+    pauseButton('Control', timer)
+
 }
 
 export default continousLoad

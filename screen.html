@@ -9,23 +9,6 @@
 </head>
 <body>
     <div class="background"></div>
-
-    <script type="module">
-        import {getMoveKey } from './move.js'
-        import continousLoad from './continousLoad.js'
-        import { loadInicial } from "./loadInicial.js"
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            let {snake, fruta} = loadInicial()
-    
-            getMoveKey(snake, snake.cabeca);
-            document.addEventListener('keydown', (tecla) => {
-                if (tecla.key === 'Shift') {
-                    continousLoad(snake, 1, 100, fruta)
-                }
-            })  
-        })
-         
-    </script>
+    <script src="./start.js" type='module'></script>
 </body>
 </html>

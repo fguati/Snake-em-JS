@@ -3,17 +3,7 @@
 import { Snake } from './Snake.js'
 import { desenhoInicialSnake } from "./draw.js"
 import Frutas from './frutas.js'
-
-
-const configuracoesIniciais = {
-    screenHeight: 400,
-    screenWidth: 700,
-    screenColor: '#000000',
-    pixelSize: 7,
-    snakeSize: 5,
-    colunas: Math.round(700 / 7),
-    linhas: Math.round(400 / 7)
-}
+import configuracoesIniciais from './configuraçõesIniciais.js'
 
 function coordenadascIniciaisSnake (width, height, pixelSize) {
     const colunas = (width / pixelSize);
@@ -50,4 +40,4 @@ function loadInicial (width = configuracoesIniciais.screenWidth, height = config
     return {snake, fruta}
 }
 
-export { loadInicial, coordenadascIniciaisSnake, configuracoesIniciais }
+export { loadInicial, coordenadascIniciaisSnake }

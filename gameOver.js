@@ -1,9 +1,11 @@
 'use strict'
 
-import { configuracoesIniciais, coordenadascIniciaisSnake } from './loadInicial.js'
+import { coordenadascIniciaisSnake } from './loadInicial.js'
 import { conectCabecaRabo } from './draw.js'
+import Colisao from './colisao.js'
+import configuracoesIniciais from './configuraçõesIniciais.js'
 
-function gameOver(snake, timer, fruta) {
+function restart(snake, timer, fruta) {
     clearInterval(timer);
     snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
     snake.curvasDoCorpo = [];
@@ -28,8 +30,13 @@ function gameOver(snake, timer, fruta) {
     fruta.mudaParaLocalRandom();
 
     conectCabecaRabo(snake);
-    // snake = loadInicial();
-    console.log(snake);
 }
 
-export default gameOver
+function checaGameOver (snake, timer, fruta) {
+    if (Colisao.pontoCorpo (snake.cabeca, snake) || Colisao.comBordaDaTela(snake.cabeca)) {
+        console.log('Colisão!')
+        restart(snake, timer, fruta);
+    }
+}
+
+export default checaGameOver
