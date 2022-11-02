@@ -2,6 +2,10 @@ body {
     text-align: center;
 }
 
+.gameArea {
+    margin: calc(20vh) calc(50vw - 350px);
+}
+
 .background {
     background-color: black;
     display: grid;
@@ -9,7 +13,18 @@ body {
     grid-template-rows: repeat(57, 1fr);
     width: 700px;
     height: 400px;
-    margin: calc(20vh) auto;
+}
+
+.controles {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botaoIniciar {
+    background-color: #3f1298;
+    color: #fff;
+    padding: 0 12px;
+    cursor: pointer;
 }
 
 .snake__head {

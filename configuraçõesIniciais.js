@@ -13,6 +13,6 @@ class ConfiguracoesIniciais {
     }
 }
 
-const configuracoesIniciais = new ConfiguracoesIniciais(400, 700, '#000000', 7, 15)
+const configuracoesIniciais = new ConfiguracoesIniciais(400, 700, '#000000', 7, 4)
 
 export default configuracoesIniciais;

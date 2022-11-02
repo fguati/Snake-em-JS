@@ -16,7 +16,11 @@ function startButton(button, snake, fruta) {
         if (tecla.key === button) {
             continousLoad(snake, 1, 100, fruta)
         }
-    }) 
+    })
+
+    const $botaoIniciar = document.getElementById('botaoIniciar')
+    console.log($botaoIniciar)
+    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, 100, fruta))
 }
 
 function getMoveKey(snake, parte) {
