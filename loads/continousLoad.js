@@ -1,9 +1,9 @@
 'use strict'
 
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
-import Colisao from './colisao.js'
-import checaGameOver from "./gameOver.js"
-import { pauseButton, getMoveKey, removeMoveKey } from "./controls.js"
+import Colisao from '../eventos/colisao.js'
+import checaGameOver from "../eventos/gameOver.js"
+import { pauseButton, getMoveKey, removeMoveKey } from "../controls.js"
 
 /*
 loadTickCurvas - Função que realiza todas as ações que envolvam curvas da cobra em um "tick". Ela checa se exitem curvas e, 

@@ -1,9 +1,9 @@
 'use strict'
 
-import { coordenadascIniciaisSnake } from './loadInicial.js'
-import { conectCabecaRabo } from './draw.js'
+import { coordenadascIniciaisSnake } from '../loads/loadInicial.js'
+import { conectCabecaRabo } from '../loads/draw.js'
 import Colisao from './colisao.js'
-import configuracoesIniciais from './configuraçõesIniciais.js'
+import configuracoesIniciais from '../objetos/configuraçõesIniciais.js'
 
 function restart(snake, timer, fruta) {
     clearInterval(timer);

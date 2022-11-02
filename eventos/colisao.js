@@ -1,6 +1,6 @@
 'use strict'
 
-import configuracoesIniciais from "./configuraçõesIniciais.js"
+import configuracoesIniciais from "../objetos/configuraçõesIniciais.js"
 
 class Colisao {
     static #isColisaoPontoReta (ponto, endReta1, endReta2) {

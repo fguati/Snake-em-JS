@@ -1,7 +1,7 @@
 'use strict'
 
 import {conectPartesSnake} from './draw.js'
-import {SnakePart} from './Snake.js'
+import {SnakePart} from '../objetos/Snake.js'
 
 
 

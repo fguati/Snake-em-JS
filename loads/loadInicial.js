@@ -1,9 +1,9 @@
 'use strict'
 
-import { Snake } from './Snake.js'
-import { desenhoInicialSnake } from "./draw.js"
-import Frutas from './frutas.js'
-import configuracoesIniciais from './configuraçõesIniciais.js'
+import { Snake } from '../objetos/Snake.js'
+import { desenhoInicialSnake } from "../loads/draw.js"
+import Frutas from '../objetos/Frutas.js'
+import configuracoesIniciais from '../objetos/configuraçõesIniciais.js'
 
 function coordenadascIniciaisSnake (width, height, pixelSize) {
     const colunas = (width / pixelSize);

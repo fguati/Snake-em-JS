@@ -1,7 +1,7 @@
 'use strict'
 
-import {criaCurvaSnake} from './elementCreate.js'
-import continousLoad from './continousLoad.js'
+import {criaCurvaSnake} from './loads/elementCreate.js'
+import continousLoad from './loads/continousLoad.js'
 
 function pauseButton(button, timer) {
     document.addEventListener('keydown', (tecla) => {

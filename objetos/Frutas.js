@@ -1,9 +1,9 @@
 'use strict'
 
-import { drawCircle } from "./draw.js";
-import { createElement } from "./elementCreate.js";
+import { drawCircle } from "../loads/draw.js";
+import { createElement } from "../loads/elementCreate.js";
 import configuracoesIniciais from "./configuraçõesIniciais.js";
-import Colisao from "./colisao.js";
+import Colisao from "../eventos/colisao.js";
 
 class Frutas {
     #create() {

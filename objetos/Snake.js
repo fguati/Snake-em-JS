@@ -1,8 +1,8 @@
 'use strict'
 
-import {drawCircle} from "./draw.js";
-import {createElement} from "./elementCreate.js"
-import Colisao from './colisao.js'
+import {drawCircle} from "../loads/draw.js";
+import {createElement} from "../loads/elementCreate.js"
+import Colisao from '../eventos/colisao.js'
 
 class SnakePart {
     #create () {

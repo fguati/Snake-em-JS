@@ -1,7 +1,7 @@
 'use strict'
 
-import { getMoveKey, startButton } from './controls.js'
-import { loadInicial } from "./loadInicial.js"
+import { getMoveKey, startButton } from '../controls.js'
+import { loadInicial } from "../loads/loadInicial.js"
     
 function startGame() {
     document.addEventListener('DOMContentLoaded', () => {
