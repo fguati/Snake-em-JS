@@ -3,7 +3,7 @@
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
 import Colisao from '../eventos/colisao.js'
 import checaGameOver from "../eventos/gameOver.js"
-import { pauseButton, getMoveKey, removeMoveKey } from "../controls.js"
+import { pauseButton } from "../controls.js"
 
 /*
 loadTickCurvas - Função que realiza todas as ações que envolvam curvas da cobra em um "tick". Ela checa se exitem curvas e, 
@@ -24,21 +24,21 @@ function loadTickCurvas (snake) {
     }
 }
 
-function loadTick (snake, tamanhoPasso, timer, fruta) {
+function loadTick (snake, tamanhoPasso, timer, fruta, placar) {
     console.log('tick');
     console.log(snake);
 
     snake.cabeca.move(tamanhoPasso);
-    checaGameOver (snake, timer, fruta);
-    snake.checaComeuFruta(fruta);
+    checaGameOver (snake, timer, fruta, placar);
+    snake.checaComeuFruta(fruta, placar);
     snake.rabo.move(tamanhoPasso);
     loadTickCurvas(snake);
     conectCabecaRabo(snake);
 }
 
-function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta) {
+function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta, placar) {
     let timer = setInterval(()=>{
-        loadTick (snake, tamanhoPasso, timer, fruta)
+        loadTick (snake, tamanhoPasso, timer, fruta, placar)
     } , intervaloDeChamada)    
 
     pauseButton('Control', timer)

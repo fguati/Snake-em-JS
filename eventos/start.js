@@ -5,10 +5,9 @@ import { loadInicial } from "../loads/loadInicial.js"
     
 function startGame() {
     document.addEventListener('DOMContentLoaded', () => {
-        let {snake, fruta} = loadInicial()
-    
+        let {snake, fruta, placar} = loadInicial()
         getMoveKey(snake, snake.cabeca);
-        startButton('Shift', snake, fruta);
+        startButton('Shift', snake, fruta, placar);
     })
 
 }

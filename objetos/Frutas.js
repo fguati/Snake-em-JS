@@ -40,9 +40,6 @@ class Frutas {
         this.draw()
     }
 
-    comer() {
-        moveSnake(snake.rabo, -1)
-    }
 }
 
 function randomInt(min, max) {

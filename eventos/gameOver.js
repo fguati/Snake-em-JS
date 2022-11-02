@@ -5,7 +5,7 @@ import { conectCabecaRabo } from '../loads/draw.js'
 import Colisao from './colisao.js'
 import configuracoesIniciais from '../objetos/configuraçõesIniciais.js'
 
-function restart(snake, timer, fruta) {
+function restart(snake, timer, fruta, placar) {
     clearInterval(timer);
     snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
     snake.curvasDoCorpo = [];
@@ -28,14 +28,15 @@ function restart(snake, timer, fruta) {
     rabo.direcao = 'right';
 
     fruta.mudaParaLocalRandom();
+    placar.zerar();
 
     conectCabecaRabo(snake);
 }
 
-function checaGameOver (snake, timer, fruta) {
+function checaGameOver (snake, timer, fruta, placar) {
     if (Colisao.pontoCorpo (snake.cabeca, snake) || Colisao.comBordaDaTela(snake.cabeca)) {
         console.log('Colisão!')
-        restart(snake, timer, fruta);
+        restart(snake, timer, fruta, placar);
     }
 }
 

@@ -53,6 +53,14 @@ class SnakePart {
 }
 
 class Snake {
+    #comerFruta (fruta, placar) {
+        console.log('comeu')
+        fruta.mudaParaLocalRandom()
+        placar.pontuar()
+        console.log(placar)
+        this.rabo.move(-1)
+    }
+
     constructor (xCabeca, yCabeca, tamanho) {
         this.cabeca = new SnakePart('snake-head', 'snake-head', xCabeca, yCabeca, 'right'),
         this.rabo = new SnakePart('snake-tail', 'snake-tail', xCabeca - tamanho, yCabeca, 'right'),
@@ -69,16 +77,11 @@ class Snake {
         }
     }
 
-    checaComeuFruta (fruta) {
+    checaComeuFruta (fruta, placar) {
         if (Colisao.pontoPonto(fruta, this.cabeca)) {
-            console.log('comeu')
-            fruta.mudaParaLocalRandom()
-            fruta.comer()
-            // chama comeu fruta
+            this.#comerFruta(fruta, placar)
         }
     }
-
-    
 }
 
 export {Snake, SnakePart}

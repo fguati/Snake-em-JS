@@ -14,15 +14,15 @@ function pauseButton(button, timer) {
     $botaoPausar.addEventListener('click', () => clearInterval(timer))
 }
 
-function startButton(button, snake, fruta) {
+function startButton(button, snake, fruta, placar) {
     document.addEventListener('keydown', (tecla) => {
         if (tecla.key === button) {
-            continousLoad(snake, 1, 100, fruta)
+            continousLoad(snake, 1, 100, fruta, placar)
         }
     })
 
     const $botaoIniciar = document.getElementById('botaoIniciar')
-    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, 100, fruta))
+    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, 100, fruta, placar))
 }
 
 function getMoveKey(snake, parte) {
