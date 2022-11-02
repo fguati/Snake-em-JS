@@ -9,6 +9,9 @@ function pauseButton(button, timer) {
             clearInterval(timer)
         }
     })
+
+    const $botaoPausar = document.getElementById('botaoPausa')
+    $botaoPausar.addEventListener('click', () => clearInterval(timer))
 }
 
 function startButton(button, snake, fruta) {
@@ -19,7 +22,6 @@ function startButton(button, snake, fruta) {
     })
 
     const $botaoIniciar = document.getElementById('botaoIniciar')
-    console.log($botaoIniciar)
     $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, 100, fruta))
 }
 

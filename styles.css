@@ -17,13 +17,14 @@ body {
 
 .controles {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
-.botaoIniciar {
+.botao {
     background-color: #3f1298;
     color: #fff;
-    padding: 0 12px;
+    padding: 0 10px;
+    width: 35px;
     cursor: pointer;
 }
 
