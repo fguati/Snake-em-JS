@@ -1,6 +1,6 @@
 'use strict'
 
-function drawCircle (element, x, y, radius = '10%', color = "#FFFFFF") {
+function drawCircle (element, x, y, radius, color) {
     element.style.borderRadius = radius;
     element.style.background = color;
     element.style.gridColumn = x;

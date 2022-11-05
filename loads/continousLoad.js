@@ -24,21 +24,21 @@ function loadTickCurvas (snake) {
     }
 }
 
-function loadTick (snake, tamanhoPasso, timer, fruta, placar) {
+function loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes) {
     console.log('tick');
     console.log(snake);
 
     snake.cabeca.move(tamanhoPasso);
-    checaGameOver (snake, timer, fruta, placar);
+    checaGameOver (snake, timer, fruta, placar, configuracoes);
     snake.checaComeuFruta(fruta, placar);
     snake.rabo.move(tamanhoPasso);
     loadTickCurvas(snake);
     conectCabecaRabo(snake);
 }
 
-function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta, placar) {
+function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta, placar, configuracoes) {
     let timer = setInterval(()=>{
-        loadTick (snake, tamanhoPasso, timer, fruta, placar)
+        loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes)
     } , intervaloDeChamada)    
 
     pauseButton('Control', timer)

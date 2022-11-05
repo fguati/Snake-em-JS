@@ -2,33 +2,38 @@
 
 import { drawCircle } from "../loads/draw.js";
 import { createElement } from "../loads/elementCreate.js";
-import configuracoesIniciais from "./configuraçõesIniciais.js";
 import Colisao from "../eventos/colisao.js";
 
 class Frutas {
+    #colunas;
+    #linhas;
+    
     #create() {
         createElement('fruta', 'fruta')
     }
 
-    #getRandomCoordinates (colunas = configuracoesIniciais.colunas, linhas = configuracoesIniciais.linhas) {
-        const randomX = randomInt(1, colunas);
-        const randomY = randomInt(1, linhas);
+    #getRandomCoordinates () {
+        const randomX = randomInt(1, this.#colunas);
+        const randomY = randomInt(1, this.#linhas);
     
         this.x = randomX;
         this.y = randomY;
     }
     
-    constructor(x, y, snake) {
+    constructor(x, y, snake, configuracoes) {
         this.x = x;
         this.y = y;
         this.#create();
         this.$HTMLElement = document.getElementById('fruta');
+        this.cor = configuracoes.snakeColor
         this.draw();
         this.snake = snake;
+        this.#colunas = configuracoes.colunas
+        this.#linhas = configuracoes.linhas
     }
 
     draw() {
-        drawCircle(this.$HTMLElement, this.x, this.y, '100%');
+        drawCircle(this.$HTMLElement, this.x, this.y, '100%', this.cor);
     }
 
     mudaParaLocalRandom() {

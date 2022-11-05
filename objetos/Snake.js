@@ -19,8 +19,8 @@ class SnakePart {
         this.$HTMLElement = document.getElementById(this.id)
     }
 
-    draw () {
-        drawCircle(this.$HTMLElement, this.x, this.y)
+    draw (radius = '10%', color = "#FFFFFF") {
+        drawCircle(this.$HTMLElement, this.x, this.y, radius, color)
     }
 
     destroy() {

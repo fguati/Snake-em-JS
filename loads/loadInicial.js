@@ -3,7 +3,6 @@
 import { Snake } from '../objetos/Snake.js'
 import { desenhoInicialSnake } from "../loads/draw.js"
 import Frutas from '../objetos/Frutas.js'
-import configuracoesIniciais from '../objetos/configuraçõesIniciais.js'
 import placar from '../objetos/placar.js'
 
 function coordenadascIniciaisSnake (width, height, pixelSize) {
@@ -15,10 +14,8 @@ function coordenadascIniciaisSnake (width, height, pixelSize) {
     return {'x': snakeX, 'y': snakeY}
 }
 
-function loadBackground (height, width, color, pixelSize){
+function loadBackground (height, width, color, colunas, linhas){
     const $background = document.querySelector('.background');
-    const colunas = Math.round(width / pixelSize);
-    const linhas = Math.round(height / pixelSize);
 
     $background.style.width = `${width}px`;
     $background.style.height = `${height}px`;
@@ -28,16 +25,16 @@ function loadBackground (height, width, color, pixelSize){
     
 }
 
-function loadInicial (width = configuracoesIniciais.screenWidth, height = configuracoesIniciais.screenHeight, pixelSize = configuracoesIniciais.pixelSize, color = configuracoesIniciais.screenColor, snakeSize = configuracoesIniciais.snakeSize) {    
-    const coordenadasIniciais = coordenadascIniciaisSnake (width, height, pixelSize)
+function loadInicial (configuracoes) {    
+    const {screenWidth, screenHeight, pixelSize, screenColor, snakeSize, colunas, linhas} = configuracoes
+    const coordenadasIniciais = coordenadascIniciaisSnake (screenWidth, screenHeight, pixelSize)
 
-    loadBackground(height, width, color, pixelSize);
+    loadBackground(screenHeight, screenWidth, screenColor, colunas, linhas);
 
     const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize)
     desenhoInicialSnake(snake);
 
-    const fruta = new Frutas(10, 15, snake)
-    console.log(placar)
+    const fruta = new Frutas(10, 15, snake, configuracoes)
     return {snake, fruta, placar}
 }
 

@@ -1,7 +1,5 @@
 'use strict'
 
-import configuracoesIniciais from "../objetos/configuraçõesIniciais.js"
-
 class Colisao {
     static #isColisaoPontoReta (ponto, endReta1, endReta2) {
         const distX = endReta1.x - endReta2.x
@@ -51,7 +49,7 @@ class Colisao {
         return resposta;
     }
 
-    static comBordaDaTela (ponto, telaHeight = configuracoesIniciais.screenHeight, telaWidth = configuracoesIniciais.screenWidth, pixelSize = configuracoesIniciais.pixelSize) {
+    static comBordaDaTela (ponto, telaHeight, telaWidth, pixelSize) {
         const colunas = Math.round(telaWidth / pixelSize);
         const linhas = Math.round(telaHeight / pixelSize);
         return ponto.x < 0 || ponto.x > colunas || ponto.y < 0 || ponto.y > linhas
