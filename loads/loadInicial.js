@@ -25,11 +25,24 @@ function loadBackground (height, width, color, colunas, linhas){
     
 }
 
+function loadBottomBar(width, backgroundColor, elementColor) {
+    const $bottomBar = document.querySelector('.bottomBar');
+    const $placar = document.querySelector('.placar');
+
+    $bottomBar.style.width = `${width}px`;
+    $bottomBar.style.backgroundColor = backgroundColor;
+    $bottomBar.style.borderTop = `1px solid ${elementColor}`
+    $placar.style.color = elementColor;
+}
+
+
+
 function loadInicial (configuracoes) {    
-    const {screenWidth, screenHeight, pixelSize, screenColor, snakeSize, colunas, linhas} = configuracoes
+    const {screenWidth, screenHeight, pixelSize, screenColor, snakeSize, snakeColor, colunas, linhas} = configuracoes
     const coordenadasIniciais = coordenadascIniciaisSnake (screenWidth, screenHeight, pixelSize)
 
     loadBackground(screenHeight, screenWidth, screenColor, colunas, linhas);
+    loadBottomBar(screenWidth, screenColor, snakeColor);
 
     const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize)
     desenhoInicialSnake(snake);

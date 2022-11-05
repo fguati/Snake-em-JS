@@ -15,21 +15,27 @@ body {
     height: 400px;
 }
 
-.controles {
-    display: flex;
-    justify-content: flex-start;
-    align-items:flex-start;
-}
-
 .bottomBar {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    height: 35px;
+}
+
+.controles {
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-end;
+}
+
+.placar {
+    margin: 1em 1em 0.5em 1em;
 }
 
 .botao {
     background-color: #3f1298;
     color: #fff;
-    padding: 0 10px;
+    padding: 0 1em;
     width: 35px;
     height: 35px;
     cursor: pointer;
