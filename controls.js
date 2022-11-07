@@ -2,6 +2,7 @@
 
 import {criaCurvaSnake} from './loads/elementCreate.js'
 import continousLoad from './loads/continousLoad.js'
+import restart from './eventos/restart.js'
 
 function pauseButton(button, timer) {
     document.addEventListener('keydown', (tecla) => {
@@ -12,6 +13,16 @@ function pauseButton(button, timer) {
 
     const $botaoPausar = document.getElementById('botaoPausa')
     $botaoPausar.addEventListener('click', () => clearInterval(timer))
+}
+
+function restarButton(snake, timer, fruta, placar, configuracoes) {
+    console.log('entrou em pause')
+    const $botaoRestart = document.getElementById('botaoRestart');
+    console.log($botaoRestart)
+    $botaoRestart.addEventListener('click', () => {
+        console.log('apertou')
+        restart(snake, timer, fruta, placar, configuracoes)
+    })
 }
 
 function startButton(button, snake, fruta, placar, configuracoes) {
@@ -34,17 +45,6 @@ function getMoveKey(snake, parte) {
         const dir = teclaDir.substring(5).toLowerCase()
         respostaDoBotao (parte, dir, snake)
         console.log('botao')
-    })
-}
-
-function removeMoveKey(snake, parte) {
-    document.removeEventListener('keydown', (tecla) => {
-        const teclaDir = tecla.key
-        
-        checarTeclaValida (teclaDir)
-
-        const dir = teclaDir.substring(5).toLowerCase()
-        respostaDoBotao (parte, dir, snake)
     })
 }
 
@@ -79,4 +79,4 @@ function checarTeclaValida (teclaString) {
     }
 }
 
-export { pauseButton, getMoveKey, startButton, removeMoveKey }
+export { pauseButton, getMoveKey, startButton, restarButton }

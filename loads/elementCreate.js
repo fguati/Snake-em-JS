@@ -26,7 +26,7 @@ function criaCurvaSnake(snake, parte) {
 
     const parteConectadaNaCurvaNova = (numDeCurvas > 0 ? snake.curvasDoCorpo[numDeCurvas - 1] : snake.rabo)
 
-    conectPartesSnake(snake.curvasDoCorpo[numDeCurvas], parteConectadaNaCurvaNova)
+    conectPartesSnake(snake.curvasDoCorpo[numDeCurvas], parteConectadaNaCurvaNova,snake.color)
 }
 
 export {createElement, criaCurvaSnake}

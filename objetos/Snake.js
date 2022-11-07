@@ -15,11 +15,12 @@ class SnakePart {
         this.classe = classe;
         this.direcao = direcao;
         this.id = id;
-        this.#create()
+        this.color = '#FFF';
+        this.#create();
         this.$HTMLElement = document.getElementById(this.id)
     }
 
-    draw (radius = '10%', color = "#FFFFFF") {
+    draw (radius = '10%', color = this.color) {
         drawCircle(this.$HTMLElement, this.x, this.y, radius, color)
     }
 
@@ -61,9 +62,12 @@ class Snake {
         this.rabo.move(-1)
     }
 
-    constructor (xCabeca, yCabeca, tamanho) {
+    constructor (xCabeca, yCabeca, tamanho, color) {
+        this.color = color;
         this.cabeca = new SnakePart('snake-head', 'snake-head', xCabeca, yCabeca, 'right'),
         this.rabo = new SnakePart('snake-tail', 'snake-tail', xCabeca - tamanho, yCabeca, 'right'),
+        this.cabeca.color = color;
+        this.rabo.color = color;
         this.curvasDoCorpo = new Array(0)
     }
 

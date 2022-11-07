@@ -12,8 +12,8 @@ function drawSnakeSegment (parte, x, y, spanX, spanY) {
     parte.$HTMLElement.style.gridArea = `${y} / ${x} / span ${spanY} / span ${spanX}`;
 }
 
-function conectPartesSnake (parteAnterior, partePosterior) {
-    drawCircle(parteAnterior.$HTMLElement, parteAnterior.x, parteAnterior.y);
+function conectPartesSnake (parteAnterior, partePosterior, color = '#FFF') {
+    parteAnterior.draw('10%',color);
     const distX = (parteAnterior.x - partePosterior.x);
     const distY = (parteAnterior.y - partePosterior.y);
 
@@ -39,14 +39,14 @@ function conectPartesSnake (parteAnterior, partePosterior) {
 
 function conectCabecaRabo (snake) {
     if(snake.curvasDoCorpo.length === 0) {
-        conectPartesSnake(snake.cabeca, snake.rabo)
+        conectPartesSnake(snake.cabeca, snake.rabo, snake.color)
     }
 }
 
 function desenhoInicialSnake (snake) {
-    snake.cabeca.draw();
-    snake.rabo.draw();
-    conectPartesSnake(snake.cabeca, snake.rabo);
+    snake.cabeca.draw(snake.color);
+    snake.rabo.draw(snake.color);
+    conectPartesSnake(snake.cabeca, snake.rabo, snake.color);
 }
 
 

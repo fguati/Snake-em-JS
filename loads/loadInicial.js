@@ -44,7 +44,7 @@ function loadInicial (configuracoes) {
     loadBackground(screenHeight, screenWidth, screenColor, colunas, linhas);
     loadBottomBar(screenWidth, screenColor, snakeColor);
 
-    const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize)
+    const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize, snakeColor)
     desenhoInicialSnake(snake);
 
     const fruta = new Frutas(10, 15, snake, configuracoes)

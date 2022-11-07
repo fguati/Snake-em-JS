@@ -3,7 +3,7 @@
 import { conectPartesSnake, conectCabecaRabo } from "./draw.js"
 import Colisao from '../eventos/colisao.js'
 import checaGameOver from "../eventos/gameOver.js"
-import { pauseButton } from "../controls.js"
+import { pauseButton, restarButton } from "../controls.js"
 
 /*
 loadTickCurvas - Função que realiza todas as ações que envolvam curvas da cobra em um "tick". Ela checa se exitem curvas e, 
@@ -42,6 +42,7 @@ function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta, placar, c
     } , intervaloDeChamada)    
 
     pauseButton('Control', timer)
+    restarButton(snake, timer, fruta, placar, configuracoes)
 
 }
 
