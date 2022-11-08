@@ -1,6 +1,6 @@
 'use strict'
 
-import { getMoveKey, startButton, restarButton } from '../controls.js'
+import { getMoveKey, startButton, dropListCores } from '../controls.js'
 import { loadInicial } from "../loads/loadInicial.js"
 import Configuracoes from '../objetos/configurações.js'
 
@@ -13,7 +13,7 @@ function startGame(configuracoes = configuracoesIniciais) {
         console.log(fruta)
         getMoveKey(snake, snake.cabeca);
         startButton('Shift', snake, fruta, placar, configuracoes);
-        // restarButton(snake, )
+        dropListCores(configuracoes, snake, fruta, placar);
     })
 
 }

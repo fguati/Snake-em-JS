@@ -1,3 +1,12 @@
+:root {
+    --branco: #fff;
+    --rosa: #dd0ea9;
+    --verdeEscuro: #044904;
+    --verdeMarcaTexto: #0df704;
+    --roxo: #690c52;
+    --preto: #000;
+}
+
 body {
     text-align: center;
 }
@@ -25,11 +34,21 @@ body {
 .controles {
     display: flex;
     justify-content: flex-start;
-    align-items:flex-end;
+}
+
+.lista {
+    padding: 0 1em;
+    width: 70%;
+    font-size: 16px;
+}
+
+.lista__opcao {
+    font-size: 16px;
 }
 
 .placar {
     margin: 1em 1em 0.5em 1em;
+    font-size: 16px;
 }
 
 .botao {

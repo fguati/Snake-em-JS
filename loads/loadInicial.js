@@ -1,7 +1,6 @@
 'use strict'
 
 import { Snake } from '../objetos/Snake.js'
-import { desenhoInicialSnake } from "../loads/draw.js"
 import Frutas from '../objetos/Frutas.js'
 import placar from '../objetos/placar.js'
 
@@ -35,20 +34,22 @@ function loadBottomBar(width, backgroundColor, elementColor) {
     $placar.style.color = elementColor;
 }
 
-
-
 function loadInicial (configuracoes) {    
     const {screenWidth, screenHeight, pixelSize, screenColor, snakeSize, snakeColor, colunas, linhas} = configuracoes
     const coordenadasIniciais = coordenadascIniciaisSnake (screenWidth, screenHeight, pixelSize)
 
-    loadBackground(screenHeight, screenWidth, screenColor, colunas, linhas);
-    loadBottomBar(screenWidth, screenColor, snakeColor);
-
     const snake = new Snake(coordenadasIniciais.x, coordenadasIniciais.y, snakeSize, snakeColor)
-    desenhoInicialSnake(snake);
-
     const fruta = new Frutas(10, 15, snake, configuracoes)
+
+    loadElements (screenHeight, screenWidth, screenColor, colunas, linhas, snakeColor)
+    snake.desenhoInicial();
+
     return {snake, fruta, placar}
 }
 
-export { loadInicial, coordenadascIniciaisSnake }
+function loadElements (screenHeight, screenWidth, screenColor, colunas, linhas, snakeColor) {
+    loadBackground(screenHeight, screenWidth, screenColor, colunas, linhas);
+    loadBottomBar(screenWidth, screenColor, snakeColor);
+}
+
+export { loadInicial, coordenadascIniciaisSnake, loadElements }
