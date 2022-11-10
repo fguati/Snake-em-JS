@@ -38,7 +38,7 @@ body {
 
 .lista {
     padding: 0 1em;
-    width: 70%;
+    width: auto;
     font-size: 16px;
 }
 
@@ -49,13 +49,14 @@ body {
 .placar {
     margin: 1em 1em 0.5em 1em;
     font-size: 16px;
+    white-space: nowrap;
 }
 
 .botao {
     background-color: #3f1298;
     color: #fff;
     padding: 0 1em;
-    width: 35px;
+    width: 2.1em;
     height: 35px;
     cursor: pointer;
     text-align: center;

@@ -29,7 +29,7 @@ function loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes) {
 
     snake.cabeca.move(tamanhoPasso);
     checaGameOver (snake, timer, fruta, placar, configuracoes);
-    snake.checaComeuFruta(fruta, placar);
+    snake.checaComeuFruta(fruta, placar, configuracoes);
     snake.rabo.move(tamanhoPasso);
     loadTickCurvas(snake);
     conectCabecaRabo(snake);

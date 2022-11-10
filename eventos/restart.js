@@ -4,8 +4,7 @@ import { coordenadascIniciaisSnake } from '../loads/loadInicial.js'
 import { conectCabecaRabo } from '../loads/draw.js'
 
 function restart(snake, timer, fruta, placar, configuracoes) {
-    console.log(snake)
-    const {screenHeight, screenWidth, pixelSize, snakeSize} = configuracoes
+    const {screenHeight, screenWidth, pixelSize, snakeSize, colunas, linhas} = configuracoes
 
     clearInterval(timer);
     snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
@@ -17,11 +16,10 @@ function restart(snake, timer, fruta, placar, configuracoes) {
     resetSnakePart(snake.cabeca, coordenadasCabeca)
     resetSnakePart(snake.rabo, coordenadasRabo)
 
-    fruta.mudaParaLocalRandom();
+    fruta.mudaParaLocalRandom(colunas, linhas);
     placar.zerar();
 
     conectCabecaRabo(snake);
-    console.log(snake)
 }
 
 function resetSnakePart(parte, coordenadas) {

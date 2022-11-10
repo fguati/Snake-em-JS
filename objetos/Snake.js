@@ -60,11 +60,9 @@ class SnakePart {
 }
 
 class Snake {
-    #comerFruta (fruta, placar) {
-        console.log('comeu')
-        fruta.mudaParaLocalRandom()
+    #comerFruta (fruta, placar, colunas, linhas) {
+        fruta.mudaParaLocalRandom(colunas, linhas)
         placar.pontuar()
-        console.log(placar)
         this.rabo.move(-1)
     }
 
@@ -85,9 +83,12 @@ class Snake {
         }
     }
 
-    checaComeuFruta (fruta, placar) {
+    checaComeuFruta (fruta, placar, configuracoes) {
+        console.log(configuracoes)
+        const {linhas, colunas} = configuracoes
         if (Colisao.pontoPonto(fruta, this.cabeca)) {
-            this.#comerFruta(fruta, placar)
+            this.#comerFruta(fruta, placar, colunas, linhas)
+            console.log('comeu',configuracoes)
         }
     }
 

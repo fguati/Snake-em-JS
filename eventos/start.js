@@ -1,10 +1,10 @@
 'use strict'
 
-import { getMoveKey, startButton, dropListCores } from '../controls.js'
+import { getMoveKey, startButton, dropListCores, dropListDificuldades } from '../controls.js'
 import { loadInicial } from "../loads/loadInicial.js"
 import Configuracoes from '../objetos/configurações.js'
 
-const configuracoesIniciais = new Configuracoes(400, 700, '#000000', 7, 4, '#FFFFFF')
+let configuracoesIniciais = new Configuracoes(400, 700, '#000000', 7, 4, '#FFFFFF')
 
 function startGame(configuracoes = configuracoesIniciais) {
     
@@ -14,6 +14,7 @@ function startGame(configuracoes = configuracoesIniciais) {
         getMoveKey(snake, snake.cabeca);
         startButton('Shift', snake, fruta, placar, configuracoes);
         dropListCores(configuracoes, snake, fruta, placar);
+        dropListDificuldades(snake, 0, fruta, placar, configuracoes);
     })
 
 }

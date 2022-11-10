@@ -5,16 +5,14 @@ import { createElement } from "../loads/elementCreate.js";
 import Colisao from "../eventos/colisao.js";
 
 class Frutas {
-    #colunas;
-    #linhas;
     
     #create() {
         createElement('fruta', 'fruta')
     }
 
-    #getRandomCoordinates () {
-        const randomX = randomInt(1, this.#colunas);
-        const randomY = randomInt(1, this.#linhas);
+    #getRandomCoordinates (colunas, linhas) {
+        const randomX = randomInt(1, colunas);
+        const randomY = randomInt(1, linhas);
     
         this.x = randomX;
         this.y = randomY;
@@ -28,16 +26,14 @@ class Frutas {
         this.cor = configuracoes.snakeColor
         this.draw();
         this.snake = snake;
-        this.#colunas = configuracoes.colunas
-        this.#linhas = configuracoes.linhas
     }
 
     draw() {
         drawCircle(this.$HTMLElement, this.x, this.y, '100%', this.cor);
     }
 
-    mudaParaLocalRandom() {
-        this.#getRandomCoordinates();
+    mudaParaLocalRandom(colunas, linhas) {
+        this.#getRandomCoordinates(colunas, linhas);
         while(Colisao.pontoCorpo(this, this.snake)){
             this.#getRandomCoordinates();
         }

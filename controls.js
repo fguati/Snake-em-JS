@@ -4,6 +4,7 @@ import {criaCurvaSnake} from './loads/elementCreate.js'
 import continousLoad from './loads/continousLoad.js'
 import restart from './eventos/restart.js'
 import { loadElements } from './loads/loadInicial.js'
+import Configuracoes from './objetos/configurações.js'
 
 function pauseButton(button, timer) {
     document.addEventListener('keydown', (tecla) => {
@@ -47,11 +48,11 @@ function getMoveKey(snake, parte) {
     })
 }
 
-function dropListCores(configuracoes, snake, fruta, placar) {
+function dropListCores(configuracoes, snake, fruta) {
     const $listaDeCores = document.getElementById('listaDeCores')
-    const {screenHeight, screenWidth, colunas, linhas} = configuracoes
     
     $listaDeCores.addEventListener('change', (event) => {
+        const {screenHeight, screenWidth, colunas, linhas} = configuracoes
         const cores = JSON.parse(event.target.value)
 
         const backGroundColor = `var(${cores.corBackgroundVarCSS})`
@@ -67,6 +68,40 @@ function dropListCores(configuracoes, snake, fruta, placar) {
         fruta.draw();
 
         console.log(snake)
+    })
+}
+
+function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
+    const $listaDificuldades = document.getElementById('listaDeDificuldades');
+    const configDificuldades = {
+        facil: {
+            width: 700,
+            height: 400,
+            speed: '1'
+        },
+        medio: {
+            width: 500,
+            height: 500,
+            speed: '1'
+        },
+        dificil: {
+            width: 365,
+            height: 300,
+            speed: '1'
+        },
+    }
+    
+    $listaDificuldades.addEventListener('change', (evento) => {
+        const dificuldade = evento.target.value;
+        const { screenColor, snakeColor } = configuracoes;
+        const width = configDificuldades[dificuldade].width;
+        const height = configDificuldades[dificuldade].height;
+
+        configuracoes.screenHeight = height;
+        configuracoes.screenWidth = width
+
+        loadElements(height, width, screenColor, configuracoes.colunas, configuracoes.linhas, snakeColor)
+        restart(snake, timer, fruta, placar, configuracoes)
     })
 }
 
@@ -101,4 +136,4 @@ function checarTeclaValida (teclaString) {
     }
 }
 
-export { pauseButton, getMoveKey, startButton, restarButton, dropListCores }
+export { pauseButton, getMoveKey, startButton, restarButton, dropListCores, dropListDificuldades }
