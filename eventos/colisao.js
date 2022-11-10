@@ -66,6 +66,16 @@ class Colisao {
             snake.eliminarCurva(curva);
         }
     }
+
+    static pontoComAlgumaCurva(snake, ponto) {
+        let colisao = false;
+        snake.curvasDoCorpo.forEach(curva => {
+            if (Colisao.pontoPonto(ponto, curva)) {
+                colisao = true;
+            }
+        })
+        return colisao;
+    }
 }
 
 

@@ -4,6 +4,7 @@ import {criaCurvaSnake} from './loads/elementCreate.js'
 import continousLoad from './loads/continousLoad.js'
 import restart from './eventos/restart.js'
 import { loadElements } from './loads/loadInicial.js'
+import Colisao from './eventos/colisao.js'
 
 function pauseButton(button, timer) {
     document.addEventListener('keydown', (tecla) => {
@@ -66,7 +67,6 @@ function dropListCores(configuracoes, snake, fruta) {
         snake.carregarCor();
         fruta.draw();
 
-        // document.querySelector('.botao').focus();
         evento.target.blur();
     })
 }
@@ -104,7 +104,6 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
 
         loadElements(height, width, screenColor, configuracoes.colunas, configuracoes.linhas, snakeColor)
         restart(snake, timer, fruta, placar, configuracoes)
-        // document.querySelector('.botao').focus();
         evento.target.blur();
     })
 }
@@ -124,8 +123,10 @@ function saoDirecoesOpostas (dir1, dir2) {
 
 function respostaDoBotao (parte, dir, snake) {
     if (!saoDirecoesOpostas(parte.direcao, dir)) {
-        parte.mudaDirecao(dir);
-        criaCurvaSnake(snake, parte);
+        if(!Colisao.pontoComAlgumaCurva(snake, parte)){
+            parte.mudaDirecao(dir);
+            criaCurvaSnake(snake, parte);
+        }
     }
 
 }
