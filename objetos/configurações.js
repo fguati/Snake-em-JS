@@ -7,7 +7,7 @@ class Configuracoes {
         return Math.round(dimensao / pixelSize)
     }
 
-    constructor(screenHeight, screenWidth, screenColor, pixelSize, snakeSize, snakeColor) {
+    constructor(screenHeight, screenWidth, screenColor, pixelSize, snakeSize, snakeColor, tickInterval) {
         this.#screenHeight = screenHeight,
         this.#screenWidth = screenWidth,
         this.screenColor = screenColor,
@@ -15,7 +15,8 @@ class Configuracoes {
         this.snakeSize = snakeSize,
         this.snakeColor = snakeColor,
         this.#colunas = this.#numeroDeRows(this.screenWidth, this.pixelSize),
-        this.#linhas = this.#numeroDeRows(this.screenHeight, this.pixelSize)
+        this.#linhas = this.#numeroDeRows(this.screenHeight, this.pixelSize),
+        this.tickInterval = tickInterval
 
     }
 

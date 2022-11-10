@@ -4,7 +4,6 @@ import {criaCurvaSnake} from './loads/elementCreate.js'
 import continousLoad from './loads/continousLoad.js'
 import restart from './eventos/restart.js'
 import { loadElements } from './loads/loadInicial.js'
-import Configuracoes from './objetos/configurações.js'
 
 function pauseButton(button, timer) {
     document.addEventListener('keydown', (tecla) => {
@@ -28,12 +27,12 @@ function restarButton(snake, timer, fruta, placar, configuracoes) {
 function startButton(button, snake, fruta, placar, configuracoes) {
     document.addEventListener('keydown', (tecla) => {
         if (tecla.key === button) {
-            continousLoad(snake, 1, 100, fruta, placar, configuracoes)
+            continousLoad(snake, 1, fruta, placar, configuracoes)
         }
     })
 
     const $botaoIniciar = document.getElementById('botaoIniciar')
-    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, 100, fruta, placar, configuracoes))
+    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 100, fruta, placar, configuracoes))
 }
 
 function getMoveKey(snake, parte) {
@@ -77,17 +76,17 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
         facil: {
             width: 700,
             height: 400,
-            speed: '1'
+            tickInterval: 100
         },
         medio: {
             width: 500,
             height: 500,
-            speed: '1'
+            tickInterval: 70
         },
         dificil: {
             width: 365,
             height: 300,
-            speed: '1'
+            tickInterval: 50
         },
     }
     
@@ -96,9 +95,11 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
         const { screenColor, snakeColor } = configuracoes;
         const width = configDificuldades[dificuldade].width;
         const height = configDificuldades[dificuldade].height;
+        const tickInterval = configDificuldades[dificuldade].tickInterval;
 
         configuracoes.screenHeight = height;
-        configuracoes.screenWidth = width
+        configuracoes.screenWidth = width;
+        configuracoes.tickInterval = tickInterval;
 
         loadElements(height, width, screenColor, configuracoes.colunas, configuracoes.linhas, snakeColor)
         restart(snake, timer, fruta, placar, configuracoes)

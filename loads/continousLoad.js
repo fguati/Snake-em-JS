@@ -35,7 +35,8 @@ function loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes) {
     conectCabecaRabo(snake);
 }
 
-function continousLoad(snake, tamanhoPasso, intervaloDeChamada, fruta, placar, configuracoes) {
+function continousLoad(snake, tamanhoPasso, fruta, placar, configuracoes) {
+    const intervaloDeChamada = configuracoes.tickInterval;
     let timer = setInterval(()=>{
         loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes)
     } , intervaloDeChamada)    
