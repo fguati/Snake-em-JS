@@ -7,7 +7,8 @@ import Configuracoes from '../objetos/configurações.js'
 let configuracoesIniciais = new Configuracoes(400, 700, '#000000', 7, 4, '#FFFFFF', 100)
 
 function startGame(configuracoes = configuracoesIniciais) {
-    
+
+
     document.addEventListener('DOMContentLoaded', () => {
         let {snake, fruta, placar} = loadInicial(configuracoes)
         console.log(fruta)

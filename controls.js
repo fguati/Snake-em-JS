@@ -66,7 +66,8 @@ function dropListCores(configuracoes, snake, fruta) {
         snake.carregarCor();
         fruta.draw();
 
-        console.log(snake)
+        // document.querySelector('.botao').focus();
+        evento.target.blur();
     })
 }
 
@@ -81,12 +82,12 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
         medio: {
             width: 500,
             height: 500,
-            tickInterval: 70
+            tickInterval: 80
         },
         dificil: {
             width: 365,
             height: 300,
-            tickInterval: 50
+            tickInterval: 60
         },
     }
     
@@ -103,6 +104,8 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
 
         loadElements(height, width, screenColor, configuracoes.colunas, configuracoes.linhas, snakeColor)
         restart(snake, timer, fruta, placar, configuracoes)
+        // document.querySelector('.botao').focus();
+        evento.target.blur();
     })
 }
 
