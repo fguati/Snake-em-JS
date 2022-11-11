@@ -25,7 +25,6 @@ function loadTickCurvas (snake) {
 }
 
 function loadTick (snake, tamanhoPasso, timer, fruta, placar, configuracoes) {
-    console.log('tick');
 
     snake.cabeca.move(tamanhoPasso);
     checaGameOver (snake, timer, fruta, placar, configuracoes);

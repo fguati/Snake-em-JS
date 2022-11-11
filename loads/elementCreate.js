@@ -14,7 +14,6 @@ function createElement (classe, id) {
 }
 
 function criaCurvaSnake(snake, parte) {
-    console.log(snake.color, snake.cabeca.color, snake.rabo.color, snake.curvasDoCorpo)
     const numDeCurvas = snake.curvasDoCorpo.length
     let numId = '1';
     if (numDeCurvas > 0) {
@@ -28,7 +27,6 @@ function criaCurvaSnake(snake, parte) {
     const parteConectadaNaCurvaNova = (numDeCurvas > 0 ? snake.curvasDoCorpo[numDeCurvas - 1] : snake.rabo)
 
     conectPartesSnake(snake.curvasDoCorpo[numDeCurvas], parteConectadaNaCurvaNova)
-    console.log(snake.color, snake.cabeca.color, snake.rabo.color, snake.curvasDoCorpo)
 }
 
 export {createElement, criaCurvaSnake}

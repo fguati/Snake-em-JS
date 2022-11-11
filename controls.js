@@ -18,7 +18,6 @@ function pauseButton(button, timer) {
 }
 
 function restarButton(snake, timer, fruta, placar, configuracoes) {
-    console.log('entrou em pause')
     const $botaoRestart = document.getElementById('botaoRestart');
     $botaoRestart.addEventListener('click', () => {
         restart(snake, timer, fruta, placar, configuracoes)
@@ -33,18 +32,19 @@ function startButton(button, snake, fruta, placar, configuracoes) {
     })
 
     const $botaoIniciar = document.getElementById('botaoIniciar')
-    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 100, fruta, placar, configuracoes))
+    $botaoIniciar.addEventListener('click', () => continousLoad(snake, 1, fruta, placar, configuracoes))
 }
 
 function getMoveKey(snake, parte) {
     document.addEventListener('keydown', (tecla) => {
+        
         const teclaDir = tecla.key
         
         checarTeclaValida (teclaDir)
 
-        const dir = teclaDir.substring(5).toLowerCase()
+        let dir = teclaDir.substring(5).toLowerCase()
+        dir = parseDirection(dir);
         respostaDoBotao (parte, dir, snake)
-        console.log('botao', snake)
     })
 }
 
@@ -109,16 +109,14 @@ function dropListDificuldades(snake, timer, fruta, placar, configuracoes) {
 }
 
 function saoDirecoesOpostas (dir1, dir2) {
-    switch (dir1) {
-        case 'up':
-            return dir2 === 'down' ? true : false;
-        case 'down':
-            return dir2 === 'up' ? true : false;
-        case 'left':
-            return dir2 === 'right' ? true : false;
-        case 'right':
-            return dir2 === 'left' ? true : false;
+    if (dir1[0] === dir2[0]) {
+        return dir1[1] === -dir2[1];
     }
+
+    if (dir1[1] === dir2[1]) {
+        return dir1[0] === -dir2[0];
+    }
+    
 }
 
 function respostaDoBotao (parte, dir, snake) {
@@ -141,4 +139,24 @@ function checarTeclaValida (teclaString) {
     }
 }
 
-export { pauseButton, getMoveKey, startButton, restarButton, dropListCores, dropListDificuldades }
+function parseDirection(dir) {
+    if (typeof dir === 'string') {
+        switch(dir) {
+            case 'up':
+                dir = [0, -1];
+                break
+            case 'down':
+                dir = [0, 1];
+                break
+            case 'left':
+                dir = [-1, 0];
+                break
+            case 'right':
+                dir = [1, 0];
+                break
+        }
+    }
+    return dir;
+}
+
+export { pauseButton, getMoveKey, startButton, restarButton, dropListCores, dropListDificuldades, parseDirection }

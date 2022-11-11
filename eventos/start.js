@@ -11,7 +11,6 @@ function startGame(configuracoes = configuracoesIniciais) {
 
     document.addEventListener('DOMContentLoaded', () => {
         let {snake, fruta, placar} = loadInicial(configuracoes)
-        console.log(fruta)
         getMoveKey(snake, snake.cabeca);
         startButton('Shift', snake, fruta, placar, configuracoes);
         dropListCores(configuracoes, snake, fruta, placar);

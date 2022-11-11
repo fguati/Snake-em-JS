@@ -3,14 +3,14 @@
 const $listaDeCores = document.getElementById('listaDeCores')
 const listaDeCores = [
     {
-        nome: 'Branco',
-        corBackgroundVarCSS: '--branco',
-        corFonteVarCSS: '--preto'
-    },
-    {
         nome: 'Preto',
         corBackgroundVarCSS: '--preto',
         corFonteVarCSS: '--branco'
+    },
+    {
+        nome: 'Branco',
+        corBackgroundVarCSS: '--branco',
+        corFonteVarCSS: '--preto'
     },
     {
         nome: 'Rosa',

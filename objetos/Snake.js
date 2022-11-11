@@ -4,8 +4,10 @@ import {drawCircle} from "../loads/draw.js";
 import {createElement} from "../loads/elementCreate.js"
 import Colisao from '../eventos/colisao.js'
 import { conectPartesSnake } from "../loads/draw.js";
+import { parseDirection } from "../controls.js";
 
 class SnakePart {
+    #direcao
     #create () {
         createElement(this.classe, this.id)
     }
@@ -14,7 +16,7 @@ class SnakePart {
         this.x = x;
         this.y = y;
         this.classe = classe;
-        this.direcao = direcao;
+        this.#direcao = parseDirection(direcao);
         this.id = id;
         this.color = color;
         this.#create();
@@ -36,25 +38,20 @@ class SnakePart {
     }
 
     mudaDirecao(dir) {
-        this.direcao = dir;
+        this.#direcao = parseDirection(dir);
+    }
+
+    set direcao(dir){
+        this.#direcao = parseDirection(dir);
+    }
+
+    get direcao() {
+        return this.#direcao
     }
 
     move(veloc) {
-        switch (this.direcao) {
-            case 'up':
-                this.y -= veloc
-                break
-            case 'down':
-                this.y += veloc
-                break
-            case 'left':
-                this.x -= veloc
-                break
-            case 'right':
-                this.x += veloc
-                break
-        }
-    
+        this.x += this.direcao[0] * veloc;
+        this.y += this.direcao[1] * veloc;
         return this.draw()
     }
 }
@@ -84,7 +81,6 @@ class Snake {
     }
 
     checaComeuFruta (fruta, placar, configuracoes) {
-        console.log(configuracoes)
         const {linhas, colunas} = configuracoes
         if (Colisao.pontoPonto(fruta, this.cabeca)) {
             this.#comerFruta(fruta, placar, colunas, linhas)
