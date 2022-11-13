@@ -10,6 +10,7 @@
 body {
     text-align: center;
     overflow: hidden;
+    padding-left: 0;
 }
 
 .gameArea {
@@ -38,7 +39,7 @@ body {
 }
 
 .lista {
-    padding: 0 1em;
+    padding-right: 0.8em;
     width: auto;
     font-size: 16px;
 }
@@ -48,15 +49,16 @@ body {
 }
 
 .placar {
-    margin: 1em 1em 0.5em 1em;
+    margin-right: 0.5em;
     font-size: 16px;
     white-space: nowrap;
+    align-self: center;
 }
 
 .botao {
     background-color: #3f1298;
     color: #fff;
-    padding: 0 1em;
+    padding-right:0.8em;
     width: 2.1em;
     height: 35px;
     cursor: pointer;

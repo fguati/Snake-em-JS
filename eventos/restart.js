@@ -7,8 +7,7 @@ function restart(snake, timer, fruta, placar, configuracoes) {
     const {screenHeight, screenWidth, pixelSize, snakeSize, colunas, linhas} = configuracoes
 
     clearInterval(timer);
-    snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
-    snake.curvasDoCorpo = [];
+    clearCurvas(snake);
     
     const coordenadasCabeca = coordenadascIniciaisSnake(screenWidth, screenHeight, pixelSize);
     const coordenadasRabo = {x: coordenadasCabeca.x - snakeSize, y: coordenadasCabeca.y}
@@ -27,6 +26,11 @@ function resetSnakePart(parte, coordenadas) {
     parte.y = coordenadas.y;
     parte.direcao = 'right';
     parte.draw()
+}
+
+function clearCurvas(snake) {
+    snake.curvasDoCorpo.forEach((curva) => {curva.destroy()})
+    snake.curvasDoCorpo = [];
 }
 
 export default restart

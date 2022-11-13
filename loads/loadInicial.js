@@ -57,16 +57,16 @@ function ajustaElementosBottomBar (bottomBarWidth) {
     const $bottomBar = document.querySelector('.bottomBar');
     
     acessaTodosNodes($bottomBar, elemento => {
-        ajustaCSS(elemento, '16px', '0')
+        ajustaCSS(elemento, '16px', '0.8em')
     })
 
     ajustaBottomBarAbaixoDe(bottomBarWidth, 520, $bottomBar, elemento => {
-        ajustaCSS(elemento, '15px', '0')
+        ajustaCSS(elemento, '15px', '0.8em')
     })
        
 
     ajustaBottomBarAbaixoDe(bottomBarWidth, 378, $bottomBar, elemento => {
-        ajustaCSS(elemento, '13px', '0')
+        ajustaCSS(elemento, '13px', '0.2em')
     })
 
 
@@ -93,7 +93,9 @@ function ajustaBottomBarAbaixoDe(bottomBarWidth, limitWidth, bottomBarHTML, call
 function ajustaCSS(elemento, fontSize, padding) {
     const $estilo = elemento.style;
     $estilo.fontSize = fontSize;
-    $estilo.padding = padding;
+    if (elemento.dataset.padding === 'yes') {
+        $estilo.paddingRight = padding;
+    }
 }
 
 export { loadInicial, coordenadascIniciaisSnake, loadElements }

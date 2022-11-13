@@ -13,6 +13,7 @@ function drawSnakeSegment (parte, x, y, spanX, spanY) {
 }
 
 function conectPartesSnake (parteAnterior, partePosterior) {
+    console.log(parteAnterior, partePosterior);
     parteAnterior.draw('10%');
     const distX = (parteAnterior.x - partePosterior.x);
     const distY = (parteAnterior.y - partePosterior.y);
