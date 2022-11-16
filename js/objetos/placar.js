@@ -1,5 +1,8 @@
 'use strict'
 
+/**
+ * objeto placar que gerencia a contagem de pontos do jogo e a exibição desses pontos na tela do jogo
+ */
 const placar = {
     pontos:0,
     updatePlacar: function() {

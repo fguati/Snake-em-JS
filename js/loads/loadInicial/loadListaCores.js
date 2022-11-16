@@ -34,12 +34,18 @@ const listaDeCores = [
     }
 ]
 
+/** 
+* função adiciona a lista de cores criada a partir do array global listaDeCores.
+*/
 function adicionarListaDeCores() {
     listaDeCores.forEach(cor => {
         adicionarCor(cor)
     })
 }
 
+/**
+ * função que recebe um objeto cor do array global listaDeCores e adiciona esse objeto como uma opção HTML na lista de cores
+ */
 function adicionarCor (cor) {
     const corFonte = cor.corFonteVarCSS;
     const corJSON = JSON.stringify(cor); 
@@ -47,4 +53,4 @@ function adicionarCor (cor) {
     $listaDeCores.innerHTML += opcaoStr;
 }
 
-adicionarListaDeCores()
+export default adicionarListaDeCores
